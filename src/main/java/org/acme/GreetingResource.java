@@ -1,8 +1,6 @@
 package org.acme;
 
-import org.acme.patterns.Singleton;
-import org.acme.patterns.SingletonEager;
-import org.acme.patterns.SingletonThreadSafe;
+import org.acme.patterns.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -33,4 +31,20 @@ public class GreetingResource {
     public String singletonThreadSafe() {
         return "This singleton is " + SingletonThreadSafe.getInstance().getMessage();
     }
+
+    @GET
+    @Path("singleton-thread-safe-optimized")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String singletonThreadSafeOptimized() {
+        return "This singleton is " + SingletonThreadSafeOptimized.getInstance().getMessage();
+    }
+
+    @GET
+    @Path("singleton-enum")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String singletonEnum(){
+        return "This singleton is " + SingletonEnum.INSTANCE.getMessage();
+    }
+
+
 }
